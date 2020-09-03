@@ -1,0 +1,122 @@
+ALGORITHM array_a
+VAR
+    set1 : ARRAY_OF INTEGER[4];
+    set2 : ARRAY_OF INTEGER[5];
+    sum : INTEGER := 0;
+    total : INTEGER := 0;
+    m : INTEGER := 0;
+    w : INTEGER := 0;
+
+BEGIN
+    set1 := {3,1,7,9};
+    set2 := {2,4,1,9,3};
+    FOR m FROM 0 TO set2.length STEP 1  DO
+        total := 0
+        FOR w FROM 0 TO set1.length STEP 1  DO
+            IF (set2[m] == set1[w]) THEN
+                total := total + set1[w]
+            END_IF
+        END_FOR
+        IF (total == 0) THEN
+            sum := sum + set2[m]
+        END_IF
+    END_FOR
+    FOR m FROM 0 TO set1.length STEP 1  DO
+        total := 0
+        FOR w FROM 0 TO set2.length STEP 1  DO
+            IF (set1[m] == set2[w]) THEN
+                total := total + set1[w]
+            END_IF
+        END_FOR
+        IF (total == 0) THEN
+            sum := sum + set1[m]
+        END_IF
+    END_FOR
+END
+
+Write(sum)
+
+
+ALGORITHM hash_a
+VAR
+    htab : <INTEGER,INTEGER>
+    sum : INTEGER := 0;
+    i : INTEGER := 0;
+BEGIN
+    htab.insert(1,2)
+    htab.insert(2,1)
+    htab.insert(3,2)
+    htab.insert(4,1)
+    htab.insert(7,1)
+    htab.insert(9,2)
+
+    FOR i FROM 0 TO 10 STEP 1  DO
+        IF (htab.get(i) == 1) THEN
+        sum := sum + (i);
+    END_IF
+    END_FOR
+END
+
+Write(sum)
+
+
+ALGORITHM array_b
+VAR
+    set1 : ARRAY_OF INTEGER[4];
+    set2 : ARRAY_OF INTEGER[5];
+    sum : INTEGER := 0;
+    total : INTEGER := 0;
+    m : INTEGER := 0;
+    w : INTEGER := 0;
+
+BEGIN
+    set1 := {3,1,7,9};
+    set2 := {2,4,1,9,3};
+    FOR m FROM 0 TO set1.length STEP 1  DO
+        total := 0
+        FOR w FROM 0 TO set2.length STEP 1  DO
+            IF (set1[m] == set2[w]) THEN
+                total := total + set2[w]
+            END_IF
+        END_FOR
+        IF (total == 0) THEN
+            sum := sum + set1[m]
+        END_IF
+    END_FOR
+    FOR m FROM 0 TO set2.length STEP 1  DO
+        total := 0
+        FOR w FROM 0 TO set1.length STEP 1  DO
+            IF (set2[m] == set1[w]) THEN
+                total := total + set2[w]
+            END_IF
+        END_FOR
+        IF (total == 0) THEN
+            sum := sum + set2[m]
+        END_IF
+    END_FOR
+END
+
+Write(sum)
+
+
+ALGORITHM hash_b
+VAR
+    htab : <INTEGER,INTEGER>
+    sum : INTEGER := 0;
+    i : INTEGER := 0;
+BEGIN
+    htab.insert(6,1)
+    htab.insert(10,2)
+    htab.insert(12,1)
+    htab.insert(13,2)
+    htab.insert(15,1)
+    htab.insert(16,1)
+
+    FOR i FROM 0 TO 17 STEP 1  DO
+        IF (htab.get(i) == 1) THEN
+        sum := sum + (i*2);
+    END_IF
+    END_FOR
+END
+
+Write(sum)
